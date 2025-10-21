@@ -1,7 +1,7 @@
 import express from 'express';
 import { connectDB } from './config/dbConfig.mjs';
 import superHeroRoutes from './routes/superHeroRoutes.mjs';
-import { connect } from 'http2';
+
 
 
 const app = express();
