@@ -2,8 +2,7 @@ import mongoose from 'mongoose';
 
 export async function connectDB(){
     try{
-        await mongoose.connect('mongodb+srv://Grupo-06:grupo06@cursadanodejs.ls9ii.mongodb.net/Node-js');
-        console.log('Conexion exitosa a Mongo DB');
+        await mongoose.connect('mongodb+srv://Grupo-20:grupo20@cursadanodejs.ls9ii.mongodb.net/Node-js');
     }
     catch (error){
         console.error('Error al conectar a MongoDB:', error);

@@ -16,7 +16,7 @@ app.use(express.json());
 
 connectDB();
 
-//Comfiguracion de rutas
+//Configuracion de rutas
 
 app.use('/api', superHeroRoutes);
 
