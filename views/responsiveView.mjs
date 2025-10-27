@@ -1,4 +1,8 @@
-export function renderizarSuperheroe(superheroe){
+
+
+export function renderizarSuperheroe(superheroe) { 
+    console.log(`Renderizando superhéroe: ${superheroe.nombreSuperHeroe}`);
+
     return {
         Nombre: superheroe.nombreSuperHeroe,
         "Nombre Real": superheroe.nombreReal,
@@ -11,6 +15,7 @@ export function renderizarSuperheroe(superheroe){
     };
 }
 
-export function renderizarListaSuperheroes(superheroes){
+export function renderizarListaSuperheroes(superheroes) {
+    console.log(`Renderizando lista de ${superheroes.length} superhéroes`);
     return superheroes.map(superheroe => renderizarSuperheroe(superheroe));
 }

@@ -1,28 +1,43 @@
 import superHero from "../models/SuperHero.mjs";
-import IRepository from "./IRepository.mjs";
+import IRepository from '../repositories/IRepository.mjs';
 
-class SuperHeroRepository extends IRepository {
+    class SuperHeroRepository extends IRepository{ 
 
     async obtenerPorId(id) {
-        return await superHero.findById(id);
+        console.log(`[Repo] Buscar superhéroe por ID: ${id}`);
+        const result = await superHero.findById(id);
+        console.log(result 
+            ? `[Repo] Superhéroe encontrado: ${result.nombreSuperHeroe}` 
+            : '[Repo] Superhéroe no encontrado');
+        return result;
     }
 
     async obtenerTodos() {
-        return await superHero.find({});
+        console.log(' [Repo] Consultando todos los superhéroes');
+        const result = await superHero.find({});
+        console.log(` [Repo] Se encontraron ${result.length} superhéroes`);
+        return result;
     }
 
-    // Se Buscara por atributo dinámico (por ejemplo: nombreSuperHeroe, planetaOrigen, etc.)
     async buscarPorAtributo(atributo, valor) {
-        // Creamos un objeto dinámico: { atributo: valor }
         const filtro = {};
         filtro[atributo] = valor;
-        return await superHero.find(filtro);
+        console.log(` [Repo] Buscando superhéroes con ${atributo} = ${valor}`);
+        const result = await superHero.find(filtro);
+        console.log(`[Repo] Se encontraron ${result.length} superhéroes con ${atributo} = ${valor}`);
+        return result;
     }
 
-    // Se Buscara héroes mayores de 30 años
     async obtenerMayoresDe30() {
-        return await superHero.find({ edad: { $gt: 30 } });
+        console.log('[Repo] Buscando superhéroes mayores de 30 años');
+        const result = await superHero.find({ edad: { $gt: 30 } });
+        console.log(`[Repo] Se encontraron ${result.length} superhéroes mayores de 30 años`);
+        return result;
     }
 }
 
 export default new SuperHeroRepository();
+
+
+
+
