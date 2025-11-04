@@ -50,13 +50,25 @@ import IRepository from '../repositories/IRepository.mjs';
     return filtrados;
 }
 
-
+    //obtener mayores de 30
     async obtenerMayoresDe30() {
         console.log('[Repo] Buscando superhéroes mayores de 30 años');
         const result = await superHero.find({ edad: { $gt: 30 } });
         console.log(`[Repo] Se encontraron ${result.length} superhéroes mayores de 30 años`);
         return result;
     }
+    // obtener por edad 
+    async obtenerPorEdad(edad) {
+        const edadNumero = Number(edad);
+        if (isNaN(edadNumero)) return [];
+
+        console.log(`[Repo] Buscando superhéroes con edad = ${edadNumero}`);
+        const result = await this.model.find({ edad: edadNumero });
+        console.log(`[Repo] Se encontraron ${result.length} superhéroes con edad = ${edadNumero}`);
+        return result;
+    }
+    
+
 }
 
 export default new SuperHeroRepository();

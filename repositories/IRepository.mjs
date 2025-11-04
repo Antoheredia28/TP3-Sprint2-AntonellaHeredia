@@ -11,6 +11,9 @@ class IRepository {
     obtenerMayoresDe30(){
         throw new Error ("Metodo 'obtenerMayoresDe30()'no implementado");
     }
+    obtenerPorEdad(edad){
+        throw new Error("Metodo 'obtenerPorEdad'no implementado");
+    }
 }
 
 export default IRepository;

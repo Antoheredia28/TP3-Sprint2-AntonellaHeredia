@@ -9,6 +9,7 @@ import {
   renderizarListaSuperheroes
 } from "../views/responsiveView.mjs";
 
+//Funcion para obtener los SH por ID
 export async function obtenerSuperheroePorIDController(req, res) {
   try {
     const { id } = req.params;
@@ -34,7 +35,7 @@ export async function obtenerSuperheroePorIDController(req, res) {
   }
 }
 
-// Obtener todos
+// Obtener todos lo SH
 export async function obtenerTodosLosSuperheroesController(req, res) {
   try {
     console.log('[Controller] GET /heroes → obteniendo todos los superhéroes');
@@ -49,7 +50,7 @@ export async function obtenerTodosLosSuperheroesController(req, res) {
   }
 }
 
-// Buscar por atributo
+// Buscar por atributo/valor
 export async function buscarSuperheroesPorAtributoController(req, res) {
   try {
     const { atributo, valor } = req.params;
@@ -89,3 +90,6 @@ export async function obtenerMayoresDe30Controller(req, res) {
     res.status(500).send({ mensaje: 'Error al obtener superhéroes mayores de 30', error: error.message });
   }
 }
+
+// Obtener por edad
+
