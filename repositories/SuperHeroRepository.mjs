@@ -57,16 +57,6 @@ import IRepository from '../repositories/IRepository.mjs';
         console.log(`[Repo] Se encontraron ${result.length} superhéroes mayores de 30 años`);
         return result;
     }
-    // obtener por edad 
-    async obtenerPorEdad(edad) {
-        const edadNumero = Number(edad);
-        if (isNaN(edadNumero)) return [];
-
-        console.log(`[Repo] Buscando superhéroes con edad = ${edadNumero}`);
-        const result = await this.model.find({ edad: edadNumero });
-        console.log(`[Repo] Se encontraron ${result.length} superhéroes con edad = ${edadNumero}`);
-        return result;
-    }
     
 
 }

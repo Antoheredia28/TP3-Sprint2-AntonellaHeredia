@@ -9,11 +9,9 @@ class IRepository {
         throw new Error ("Metodos buscarPorAtributo()' no implementado");
     }
     obtenerMayoresDe30(){
-        throw new Error ("Metodo 'obtenerMayoresDe30()'no implementado");
+        throw new Error ("Metodo 'obtenerMayoresDe()'no implementado");
     }
-    obtenerPorEdad(edad){
-        throw new Error("Metodo 'obtenerPorEdad'no implementado");
-    }
+    
 }
 
 export default IRepository;
