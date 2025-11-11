@@ -2,8 +2,8 @@ import {
   obtenerSuperheroePorID,
   obtenerTodosLosSuperheroes,
   buscarSuperheroesPorAtributo,
-  obtenerSuperHeroesMayoresDe30,
-  obtenerPorEdad,
+  obtenerMayoresDe30ConFiltros,
+  
 } from "../services/superheroesService.mjs";
 import {
   renderizarSuperheroe,
@@ -18,7 +18,7 @@ export async function obtenerSuperheroePorIDController(req, res) {
 
     const superheroe = await obtenerSuperheroePorID(id);
     if (!superheroe) {
-      console.warn(`No se encontró superhéroe con ID: ${id}`);
+      console.log(`No se encontró superhéroe con ID: ${id}`);
       return res.status(404).send({ mensaje: "Superhéroe no encontrado" });
     }
 
@@ -97,33 +97,33 @@ export async function buscarSuperheroesPorAtributoController(req, res) {
 }
 
 // Obtener mayores de 30
-export async function obtenerMayoresDe30Controller(req, res) {
+export async function obtenerMayoresDe30ConFiltrosController(req, res) {
   try {
-    console.log(
-      "[CONT] GET /heroes/mayores-30 → buscando superhéroes mayores de 30"
-    );
-    const superheroes = await obtenerSuperHeroesMayoresDe30();
+    console.log("[CONT] GET /heroes/edad/mayorA30 → buscando superhéroes >30, del planeta Tierra y con al menos 2 poderes");
+
+    const superheroes = await obtenerMayoresDe30ConFiltros();
 
     if (superheroes.length === 0) {
-      console.warn("No se encontraron superhéroes mayores de 30 años");
-      return res
-        .status(404)
-        .send({ mensaje: "No se encontraron superhéroes mayores de 30 años" });
+      console.warn("No se encontraron superhéroes que cumplan las condiciones (>30, Tierra, ≥2 poderes)");
+      return res.status(404).send({
+        mensaje: "No se encontraron superhéroes mayores de 30 años, del planeta Tierra y con al menos 2 poderes"
+      });
     }
 
-    console.log(
-      `Se encontraron ${superheroes.length} superhéroes mayores de 30 años`
-    );
+    console.log(`Se encontraron ${superheroes.length} superhéroes que cumplen las condiciones`);
+
     const superheroesFormateados = renderizarListaSuperheroes(superheroes);
-    res.status(200).json(superheroesFormateados);
+
+    return res.status(200).json(superheroesFormateados);
+
   } catch (error) {
-    console.error(`Error en obtenerMayoresDe30Controller: ${error.message}`);
-    res
-      .status(500)
-      .send({
-        mensaje: "Error al obtener superhéroes mayores de 30",
-        error: error.message,
-      });
+    console.error(`[CONT] Error en obtenerSuperheroesMayorA30ConFiltrosController: ${error.message}`);
+
+    return res.status(500).send({
+      mensaje: "Error al obtener superhéroes con filtros",
+      error: error.message,
+    });
   }
 }
+
 

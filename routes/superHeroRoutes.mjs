@@ -3,7 +3,7 @@ import {
   obtenerSuperheroePorIDController,
   obtenerTodosLosSuperheroesController,
   buscarSuperheroesPorAtributoController,
-  obtenerMayoresDe30Controller
+  obtenerMayoresDe30ConFiltrosController,
 } from '../controllers/superheroesController.mjs';
 
 const router = express.Router();
@@ -12,7 +12,7 @@ const router = express.Router();
 router.get('/heroes/mayores-30', (req, res, next) => {
   console.log(' Ruta activada: /heroes/mayores-30');
   next(); // continúa al controlador
-}, obtenerMayoresDe30Controller);
+}, obtenerMayoresDe30ConFiltrosController);
 
 // Ruta específica: búsqueda por atributo
 router.get('/heroes/buscar/:atributo/:valor', (req, res, next) => {

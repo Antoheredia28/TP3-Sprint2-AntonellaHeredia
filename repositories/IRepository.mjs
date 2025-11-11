@@ -8,7 +8,7 @@ class IRepository {
     buscarPorAtributo (atributo, valor){
         throw new Error ("Metodos buscarPorAtributo()' no implementado");
     }
-    obtenerMayoresDe30(){
+    obtenerMayoresDe30ConFiltros(){
         throw new Error ("Metodo 'obtenerMayoresDe()'no implementado");
     }
     
